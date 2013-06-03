@@ -291,7 +291,7 @@ Carousel.prototype = {
 };
 
 
-angular.module('fundoo.directives', []).directive('carousel', ['$compile', 'dateService', function($compile, dateService) {
+angular.module('fundoo.directives', []).directive('carousel', ['$compile', function($compile) {
   return {
     restrict: 'A',
     scope: {
@@ -332,6 +332,7 @@ angular.module('fundoo.directives', []).directive('carousel', ['$compile', 'date
             scope.onPageUpcoming({page: pageIndex, tmplCb: tmplCbFunction(i + carousel.options.numberOfDivsOnEachSide)});
           }
         };
+        scope.giveCarouselTo({carousel: carousel});
 
         initialCarouselLoad();
 
@@ -356,9 +357,6 @@ angular.module('fundoo.directives', []).directive('carousel', ['$compile', 'date
           carousel.prev();
         };
 
-        scope.giveCarouselTo({carousel: carousel});
-
-
         // Handle resizing of the page
         function resizeCarousel() {
           carousel.refreshSize();
@@ -372,7 +370,7 @@ angular.module('fundoo.directives', []).directive('carousel', ['$compile', 'date
         var timeout = false;
         var delta = 200;
         $(window).resize(function() {
-          rtime = new Date(dateService.getCurrentTime());
+          rtime = new Date();
           if (timeout === false) {
             timeout = true;
             setTimeout(resizeend, delta);
@@ -380,7 +378,7 @@ angular.module('fundoo.directives', []).directive('carousel', ['$compile', 'date
         });
 
         function resizeend() {
-          if (new Date(dateService.getCurrentTime()) - rtime < delta) {
+          if (new Date() - rtime < delta) {
             setTimeout(resizeend, delta);
           } else {
             timeout = false;
