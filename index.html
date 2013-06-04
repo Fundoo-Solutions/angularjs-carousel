@@ -5,32 +5,68 @@
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css">
     <style type="text/css">
       .photo-carousel {
-        width: 500px;
-        height: 200px;
+        width: 420px;
+        height: 120px;
+      }
+      .carousel-class {
+        margin: 0 auto;
+        width: 650px;
+        position: relative;
+      }
+      .carousel-class span.link, .carousel-class a {
+        display: inline-block;
+        position: absolute;
+        top: 35px;
       }
       .photo-container {
-        width: 600px;
-        height: 250px;;
+        width: 500px;
+        height: 125px;;
+        margin: 0 auto;
+      }
+      .photo-grid img {
+        width: 80px;
+        height: 80px;
       }
     </style>
   </head>
   <body ng-controller="MainCtrl" style="background-color: #eee; font-size:18px">
 
-    <div class="photo-container" data-carousel data-carousel-class="photo-carousel" data-on-page-upcoming="loadPage(page, tmplCb)" data-give-carousel-to="onCarouselAvailable(carousel)">
-      <div class="photo-grid span12">
-        <span data-ng-repeat="photo in photos">
-          <img ng-src="{{getPhotoUrl(photo)}}">
-        </span>
+  <div class="row-fluid" >
+    <div class="span8 hero-unit" style="margin-left:215px; margin-top:50px; background-color: #78d2b6;	">
+      <h2 class="pagination-centered">Fundoo Carousel Directive</h2>
+      <div class="span10" style="margin-left:50px; margin-top:20px">
+        <p>The Fundoo Carousel is heavily inspired and liberally borrows from <a href="http://cubiq.org/swipeview">Cubiq's SwipeView</a>, but has been heavily modified to integrate with AngularJS.</p>
+        <p>This carousel is awesome because</p>
+        <ul>
+          <li>Light on DOM- Uses rotating three divs by default</li>
+          <li>Lazy loading - Only loads the next and previous page, and loads the rest as needed</li>
+          <li>Directive - Easily reusable directive, that gives you all the hooks you need</li>
+        </ul>
+      </div>
+      <div class="span8 pagination-centered" style="margin-top:40px; margin-left:130px">
+        <a href="https://github.com/Fundoo-Solutions/angularjs-carousel" class="btn btn-success" title="Github Repository" style="font-size:20px"><img src="github_icon.png">View On Github</a>
       </div>
     </div>
-    <a style="float: left;" data-ng-show="hasPreviousPage()" data-ng-click="previousPage()">&lt;&lt; Previous</a>
-    <span style="float: left;" data-ng-hide="hasPreviousPage()">&lt;&lt; Previous</span>
-    <a style="float: left;" data-ng-show="hasNextPage()" data-ng-click="nextPage()">Next &gt;&gt;</a>
-    <span style="float: left;" data-ng-hide="hasNextPage()">Next &gt;&gt;</span>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
-    <script src="carousel.js"></script>
-    <script src="app.js"></script>
+  </div>
+
+  <div class="carousel-class">
+    <a data-ng-show="hasPrevious()" data-ng-click="previous()">&lt;&lt; Prev</a>
+    <span class="link" data-ng-hide="hasPrevious()">&lt;&lt; Prev</span>
+    <div class="photo-container" data-carousel data-carousel-class="photo-carousel" data-on-page-upcoming="loadPage(page, tmplCb)" data-give-carousel-to="onCarouselAvailable(carousel)">
+      <div class="photo-grid">
+      <span data-ng-repeat="photo in photos">
+        <img ng-src="{{getPhotoUrl(photo)}}">
+      </span>
+      </div>
+    </div>
+    <a data-ng-show="hasNext()" style="right: 10px;" data-ng-click="next()">Next &gt;&gt;</a>
+    <span class="link" style="right: 10px;" data-ng-hide="hasNext()">Next &gt;&gt;</span>
+  </div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+  <script src="carousel.js"></script>
+  <script src="app.js"></script>
   </body>
 </html>
