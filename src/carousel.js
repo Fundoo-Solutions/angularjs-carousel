@@ -350,12 +350,6 @@ angular.module('fundoo.directives', []).directive('carousel', ['$compile', funct
             }
           }
         });
-        scope.next = function() {
-          carousel.next();
-        };
-        scope.previous = function() {
-          carousel.prev();
-        };
 
         // Handle resizing of the page
         function resizeCarousel() {

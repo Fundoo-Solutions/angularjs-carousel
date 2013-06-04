@@ -2,16 +2,16 @@ angular.module('FundooCarouselApp', ['fundoo.directives'])
   .controller('MainCtrl', ['$scope', 'FlickrApi', function($scope, flickr) {
     var carousel;
 
-    $scope.hasPreviousPage = function() {
+    $scope.hasPrevious = function() {
       return carousel ? carousel.hasPrevious() : false;
     };
-    $scope.previousPage = function() {
+    $scope.previous = function() {
       if (carousel) { carousel.prev(); }
     };
-    $scope.hasNextPage = function() {
+    $scope.hasNext = function() {
       return carousel ? carousel.hasNext() : false;
     };
-    $scope.nextPage = function() {
+    $scope.next = function() {
       if (carousel) { carousel.next(); }
     };
 
