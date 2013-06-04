@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-App="FundooCarouselApp">
+  <head>
+    <title>AngularJS Carousel Directive Demo</title>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css">
+    <style type="text/css">
+      .photo-carousel {
+        width: 500px;
+        height: 200px;
+      }
+      .photo-container {
+        width: 600px;
+        height: 250px;;
+      }
+    </style>
+  </head>
+  <body ng-controller="MainCtrl" style="background-color: #eee; font-size:18px">
+
+    <div class="photo-container" data-carousel data-carousel-class="photo-carousel" data-on-page-upcoming="loadPage(page, tmplCb)" data-give-carousel-to="onCarouselAvailable(carousel)">
+      <div class="photo-grid span12">
+        <span data-ng-repeat="photo in photos">
+          <img ng-src="{{getPhotoUrl(photo)}}">
+        </span>
+      </div>
+    </div>
+    <a style="float: left;" data-ng-show="hasPreviousPage()" data-ng-click="previousPage()">&lt;&lt; Previous</a>
+    <span style="float: left;" data-ng-hide="hasPreviousPage()">&lt;&lt; Previous</span>
+    <a style="float: left;" data-ng-show="hasNextPage()" data-ng-click="nextPage()">Next &gt;&gt;</a>
+    <span style="float: left;" data-ng-hide="hasNextPage()">Next &gt;&gt;</span>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+    <script src="carousel.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
