@@ -113,6 +113,10 @@ Carousel.prototype = {
   goToPage: function (p, reset) {
     var i, index;
 
+    if (reset) {
+      this.updatePageCount(1);
+    }
+
     this.masterPages[this.currentMasterPage].className = this.masterPages[this.currentMasterPage].className.replace(/(^|\s)carousel-active(\s|$)/, '');
     for (i=0; i<this.numDivs; i++) {
       var className = this.masterPages[i].className;

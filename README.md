@@ -58,7 +58,7 @@ Let us take a look at the HTML first:
 <a href="" ng-click="next()">Next</a>
 ```
 
-There are four major attributes of note in the HTML
+There are five major attributes of note in the HTML
 
 1. *carousel* : This marks the DOM element as a Carousel component. Without it, the rest are useless
 2. *on-page-upcoming*: This is the function on the controller that is called whenever the carousel directive
@@ -67,6 +67,8 @@ There are four major attributes of note in the HTML
    the controller to the directive. This is used for writing helpful functions to decide to show and hide
    the next / previous page links, and reset the carousel.
 4. *carousel-class*: If you want to specify a class to be added to each page of the carousel.
+5. *myCarouselPage*: This is the div that gets replicated for each page of the carousel. So, for every page
+   that is there in the carousel, one copy of this div will get created.
 
 Now, let us take a look at the controller code to get this to work:
 
@@ -82,7 +84,7 @@ $scope.loadPage = function(page, tmplCb) {
   carousel.updatePageCount(totalPages);
   tmplCb(carouselPageScope);
 };
-$scope.onCarouselAvailable(car) {
+$scope.onCarouselAvailable = function(car) {
   carousel = car;
 };
 $scope.hasNext = function() {
@@ -101,7 +103,7 @@ $scope.prev = function() {
 
 We have quite a bit happening here, but there is really two major functions, and the rest are pretty boiler-plate:
 
-1. *loadPage*: THe load page function, as mentioned above takes two arguments. And it has two responsibilities. It needs
+1. *loadPage*: The load page function, as mentioned above takes two arguments. And it has two responsibilities. It needs
    to (ideally) create a new scope, and then fetch the contents for that particular page, and set it on this scope. The
    data on the scope can be set / reassigned at any point, as long as the reference to the scope is maintained. So async
    calls are not a problem!
