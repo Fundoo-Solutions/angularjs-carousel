@@ -1,5 +1,10 @@
 # A Lazy Loading, DOM-light AngularJS Carousel
 
+## Where can I see a demo?
+
+Without further adieu, go check out our GitHub page for the [AngularJS-Carousel-Demo]. Then come back, and we'll
+talk about why it is so awesome.
+
 ## Why?
 
 Because everyone loves a carousel! And Twitter Bootstrap's carousel leaves a lot to be desired.
@@ -109,10 +114,6 @@ We have quite a bit happening here, but there is really two major functions, and
    calls are not a problem!
 2. *onCarouselAvailable*: THis gives the controller a handle on the carousel. Nothing more, nothing less.
 3. *The pagination functions*: These are used to hide / show the next and previous links, based on the state of the carousel.
-
-## Where can I see a demo?
-
-Glad you asked. Go check out our GitHub page for the [AngularJS-Carousel-Demo]
 
 ## Who are we?
 
